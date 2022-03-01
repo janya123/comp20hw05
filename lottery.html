@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Lucky Ball Game</h1>
+		<script language="javascript">
+			my_nums = [0, 0, 0, 0, 0];
+			my_lucky = 0;
+
+			for (i = 0; i < 5; i++) {
+				my_nums[i] = Math.floor(Math.random() * (48 - 1 + 1) + 1);
+			}
+
+			my_lucky = Math.floor(Math.random() * (48 - 1 + 1) + 1);
+
+			document.write("My pick: ");
+
+			for (i = 0; i < 5; i++) {
+				document.write(my_nums[i] + '&nbsp;');
+			}
+
+			my_nums.sort((a, b) => a - b);
+
+			document.write("lucky: " + my_lucky + '<br>');
+
+			document.write("My pick (sorted): ");
+			for (i = 0; i < 5; i++) {
+				document.write(my_nums[i] + '&nbsp;');
+			}
+
+			document.write("lucky: " + my_lucky + '<br>');
+
+			win = [12, 15, 24, 35, 48];
+			win_lucky = 3;
+			count = 0;
+			lucky_bool = false;
+			prizes = "";
+
+			document.write("Winning numbers: ");
+
+			for (i = 0; i < 5; i++) {
+				document.write(win[i] + '&nbsp;');
+			}
+
+			document.write("lucky: " + win_lucky + '<br>');
+
+
+
+			for (i = 0; i < 5; i++) {
+				for (j = 0; j < 5; j++) {
+					if (win[j] == my_nums[i]) {
+						count++;
+					}
+				}
+			}
+			if (win_lucky == my_lucky) {
+				lucky_bool = true;
+			}
+
+			if (count == 5 && win_lucky == my_lucky) {
+				prizes = "$7,000 a WEEK for LIFE";
+			} else if (count == 5) {
+				prizes = "$25,000 a YEAR for LIFE";
+			} else if (count == 4 && win_lucky == my_lucky) {
+				prizes = "$5,000";
+			} else if (count == 4) {
+				prizes = "$200";
+			} else if (count == 3 && win_lucky == my_lucky) {
+				prizes = "$150";
+			} else if (count == 3) {
+				prizes = "$20";
+			} else if (count == 2 && win_lucky == my_lucky) {
+				prizes = "$25";
+			} else if (count == 2) {
+				prizes = "$3";
+			} else if (count == 1 && win_lucky == my_lucky) {
+				prizes = "$6";
+			} else if (count == 0 && win_lucky == my_lucky) {
+				prizes = "$4";
+			} else {
+				prizes = "$0";
+			}
+
+			document.write("Numbers matching: " + count + '<br>');
+
+			if (win_lucky == my_lucky) {
+				document.write("Lucky ball matches" + '<br>');
+			} else {
+				document.write("Lucky ball does not match" + '<br>');
+			}
+
+			document.write("Your winnings: " + prizes + '<br>');
+
+		</script>
+	</body>
+</html>
